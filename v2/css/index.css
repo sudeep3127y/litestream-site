@@ -1,12 +1,23 @@
 html,
 body {
-    width: 100%;
+    width: 500%;
     max-width: 100%;
     overflow-x: hidden;
     background-color: #000000;
     scroll-behavior: smooth;
-    user-select: none;
+    user-select: show;
 }
+#container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 1900px) {
+    #container {
+      max-width: 1600px;
+    }
+  }
 .popup {
     display: none;
     position: fixed;
@@ -182,7 +193,7 @@ footer a {
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
     footer a {
         font-size: 15px;
     }
