@@ -1,7 +1,7 @@
 const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=https://proxy.sb543267gmailcom.workers.dev/",
     IndexApi = "/home",
     recentapi = "/recent/",
-    AvailableServers = ["https://vip-gamma.vercel.app/" ,"https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -103,7 +103,7 @@ async function getPopularAnimes(data) {
         }
 
         POPULAR_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb"># ${pos + 1
-            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\confusa-confused.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".popularg").innerHTML = POPULAR_HTML;
@@ -127,7 +127,7 @@ async function getRecentAnimes(page = 1) {
             subOrDub = "SUB";
         }
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\confusa-confused.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".recento").innerHTML += RECENT_HTML;
@@ -199,8 +199,8 @@ function sleep(ms) {
 }
 
 // To load more animes when scrolled to bottom
-let page = 5;
-let isLoading = true;
+let page = 2;
+let isLoading = false;
 
 async function loadAnimes() {
     try {
@@ -209,13 +209,13 @@ async function loadAnimes() {
             await getRecentAnimes(page);
             RefreshLazyLoader();
             console.log("Recent animes loaded");
-            page += 5;
-            isLoading = true;
+            page += 1;
+            isLoading = false;
         }
     } catch (error) {
-        isLoading = true;
+        isLoading = false;
         console.error(`Failed To Load Recent Animes Page : ${page}`);
-        page += 5;
+        page += 1;
     }
 }
 
@@ -255,17 +255,3 @@ getJson(IndexApi).then((data) => {
         console.log("Recent animes loaded");
     });
 });
-
-  const openPopupButton = document.getElementById("open-popup");
-  const popup = document.getElementById("popup");
-  const closeButton = document.querySelector(".close-button");
-
-  openPopupButton.addEventListener("click", () => {
-    popup.style.display = "block";
-  });
-
-  closeButton.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-
