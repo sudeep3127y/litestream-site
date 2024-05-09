@@ -199,18 +199,18 @@ function sleep(ms) {
 }
 
 // To load more animes when scrolled to bottom
-let page = 2;
+let page = 1;
 let isLoading = true;
 
 async function loadAnimes() {
     try {
-        if (isLoading == true) {
+        if (isLoading == false) {
             isLoading = true;
             await getRecentAnimes(page);
             RefreshLazyLoader();
             console.log("Recent animes loaded");
             page += 1;
-            isLoading = false;
+            isLoading = true;
         }
     } catch (error) {
         isLoading = true;
