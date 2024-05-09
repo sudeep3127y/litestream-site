@@ -200,11 +200,11 @@ function sleep(ms) {
 
 // To load more animes when scrolled to bottom
 let page = 2;
-let isLoading = false;
+let isLoading = true;
 
 async function loadAnimes() {
     try {
-        if (isLoading == false) {
+        if (isLoading == true) {
             isLoading = true;
             await getRecentAnimes(page);
             RefreshLazyLoader();
@@ -213,7 +213,7 @@ async function loadAnimes() {
             isLoading = false;
         }
     } catch (error) {
-        isLoading = false;
+        isLoading = true;
         console.error(`Failed To Load Recent Animes Page : ${page}`);
         page += 1;
     }
