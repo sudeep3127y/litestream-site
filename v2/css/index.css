@@ -1,12 +1,24 @@
 html,
 body {
-    width: 500%;
+    width: 50%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: show;
     background-color: #000000;
     scroll-behavior: smooth;
-    user-select: show;
+    user-select: none;
 }
+#reloadButton {
+    background-color: #ee0202;
+    border: ;
+    color: rgb(248, 241, 241);
+    padding: 2px 100px;
+    text-align:center;
+    text-decoration: 1;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 #container {
     width: 100%;
     max-width: 1300px;
@@ -273,7 +285,7 @@ html {
     background-image: none;
     display: block;
     height: fit-content;
-    width: 100vw;
+    width: 1000vw;
 }
 
 html {
@@ -303,7 +315,7 @@ div {
 .poster {
     box-sizing: border-box;
     text-align: center;
-    display: grid;
+    display: -moz-grid-line;
     padding: 20px;
     margin: 0px;
     overflow: visible;
@@ -361,7 +373,7 @@ h1 {
 }
 
 .watch-btn {
-    background: #7b9b08;
+    background: #f8eaea;
     color: black;
     border-radius: 4px;
     font-weight: 400;
@@ -408,7 +420,7 @@ h1 {
     section img {
         box-sizing: border-box;
         height: fit-content;
-        max-width: 300px;
+        max-width: 3000px;
         width: 100%;
         border: 5px solid white;
         border-radius: 5px;
@@ -422,7 +434,7 @@ h1 {
         margin: 0px;
         overflow: visible;
         margin-top: 20px;
-        width: 250px;
+        width: 2500px;
     }
 }
 

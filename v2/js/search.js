@@ -79,3 +79,8 @@ null == query && window.location.replace("./index.html"),
             });
     }),
     loadData();
+
+    
+document.getElementById("reloadButton").addEventListener("click", function() {
+    location.reload();
+  });

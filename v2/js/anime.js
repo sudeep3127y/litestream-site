@@ -346,5 +346,9 @@ async function loadData() {
         console.error(err);
     }
 }
-
 loadData();
+
+
+document.getElementById("reloadButton").addEventListener("click", function() {
+    location.reload();
+  });

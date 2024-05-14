@@ -199,8 +199,8 @@ function sleep(ms) {
 }
 
 // To load more animes when scrolled to bottom
-let page = 1;
-let isLoading = true;
+let page = 2;
+let isLoading = false;
 
 async function loadAnimes() {
     try {
@@ -210,10 +210,10 @@ async function loadAnimes() {
             RefreshLazyLoader();
             console.log("Recent animes loaded");
             page += 1;
-            isLoading = true;
+            isLoading = false;
         }
     } catch (error) {
-        isLoading = true;
+        isLoading = false;
         console.error(`Failed To Load Recent Animes Page : ${page}`);
         page += 1;
     }
@@ -255,3 +255,7 @@ getJson(IndexApi).then((data) => {
         console.log("Recent animes loaded");
     });
 });
+
+document.getElementById("reloadButton").addEventListener("click", function() {
+    location.reload();
+  });

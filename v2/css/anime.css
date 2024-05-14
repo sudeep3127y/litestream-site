@@ -1,3 +1,16 @@
+#reloadButton {
+    background-color: #ee0202;
+    border: ;
+    color: rgb(248, 241, 241);
+    padding: 2px 100px;
+    text-align:center;
+    text-decoration: 1;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
 #load {
     text-align: center;
     padding: 20px;

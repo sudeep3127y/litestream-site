@@ -220,3 +220,8 @@ async function loadData() {
     document.getElementById("LiteStreamFrame").focus();
 }
 (null == AnimeID || null == EpisodeID) && (window.location = "./index.html"), loadData();
+
+
+document.getElementById("reloadButton").addEventListener("click", function() {
+    location.reload();
+  });
