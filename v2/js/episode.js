@@ -1,16 +1,16 @@
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=https://proxy.sb543267gmailcom.workers.dev/",
+const ProxyApi = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/";
     animeapi = "/anime/",
     episodeapi = "/episode/",
     dlapi = "/download/",
-    AvailableServers = ["https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
 async function getJson(e, t = 0) {
-    let s = getApiServer("https://api3.sb543267gmailcom.workers.dev/"),
+    let s = getApiServer(""),
         i = s + e;
     if (t > 100) throw `Too many errors while fetching ${i}`;
-    t > 0 && (console.log("Retrying fetch using proxy"), (i = "https://proxy.sb543267gmailcom.workers.dev/?u=" + i));
+    t > 0 && (console.log("Retrying fetch using proxy"), (i = "" + i));
     try {
         let a = await fetch(i);
         return await a.json();

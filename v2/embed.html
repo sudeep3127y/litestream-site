@@ -12,12 +12,12 @@
         html {
             width: 100%;
             height: 100%;
-            background: #2a11bd;
+            background: #111;
         }
 
         body {
             margin: 0px;
-            background-color: #5a098a;
+            background-color: #000;
             width: 100%;
             height: 100%;
             display: flex;
@@ -32,7 +32,7 @@
         }
 
         video {
-            aspect-ratio: auto;
+            aspect-ratio: 16/9;
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -65,23 +65,31 @@
 
         .plyr__time-skip.is-left {
             left: 0;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.5) 0%,
+                    transparent 100%);
         }
 
         .plyr__time-skip.is-right {
             right: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.5) 100%);
         }
 
         .plyr__time-skip.is-animated {
             animation: plyr__time-skip ease 1s forwards;
         }
+
+        :root {
+            --plyr-color-main: #eb001f;
+        }
     </style>
 
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
-<script src="https://unpkg.com/plyr@3"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "73cd93711c634941a5f75b87abb82d1c"}'></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WG89GQBWVT"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-WG89GQBWVT');</script>

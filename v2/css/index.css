@@ -1,150 +1,19 @@
 html,
 body {
-    width: 50%;
+    width: 100%;
     max-width: 100%;
-    overflow-x: show;
-    background-color: #000000;
+    overflow-x: hidden;
+    background-color: #282828;
     scroll-behavior: smooth;
     user-select: none;
 }
-#reloadButton {
-    background-color: #ee0202;
-    border: ;
-    color: rgb(248, 241, 241);
-    padding: 2px 100px;
-    text-align:center;
-    text-decoration: 1;
-    display: inline-block;
-    font-size: 10px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-#container {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-  
-  @media (min-width: 1900px) {
-    #container {
-      max-width: 1600px;
-    }
-  }
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  }
-  
-  .popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid black;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-header {
-    width: 100%;
-    background-color: lightblue;
-    padding: 10px;
-  }
 
 header {
     width: 100%;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--font-color);
-  }
-  
-  /*Simple css to style it like a toggle switch*/
-  .theme-switch-wrapper {
-    display: smooth;
-    align-items: center;
-  
-    em {
-      margin-left: 10px;
-      font-size: 1rem;
-    }
-  }
-  .theme-switch {
-    display: none;
-  }
-  
-  .slider {
-    background-color: #ffffff;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    background-color: #000000;
-    bottom: 4px;
-    content: "";
-    height: 26px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 26px;
-  }
-  
-  input:checked + .slider {
-    background-color: #000000;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
-  :root {
-    --primary-color: #302AE6;
-    --secondary-color: #536390;
-    --font-color: #424242;
-    --bg-color: #fff;
-    --heading-color: #292922;
-}
-
-[data-theme="dark"] {
-    --primary-color: #9A97F3;
-    --secondary-color: #818cab;
-    --font-color: #e1e1ff;
-    --bg-color: #161625;
-    --heading-color: #818cab;
 }
 
 footer {
-    background: #110488;
+    background: #eb3349;
     display: flex;
     flex-wrap: nowrap;
     align-content: center;
@@ -156,41 +25,6 @@ footer {
 footer div {
     text-align: center;
 }
-
-.button-container {
-    display: flex;
-    background-color: rgba(245, 73, 144);
-    width: 250px;
-    height: 40px;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
-          rgba(245, 73, 144, 0.5) 5px 10px 15px;
-  }
-  
-  .button {
-    outline: 0 !important;
-    border: 0 !important;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    transition: all ease-in-out 0.3s;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    transform: translateY(-3px);
-  }
-  
-  .icon {
-    font-size: 20px;
-  }
 
 footer a {
     color: white;
@@ -205,17 +39,16 @@ footer a {
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
     footer a {
         font-size: 15px;
     }
 }
 
 #head-div {
-    background: linear-gradient(to right, #020005 40%, #000000);
+    background: linear-gradient(to right, #eb3349 40%, #f45c43);
     width: 100%;
     text-align: center;
-    padding-top: 25px;
     height: 86px;
     margin: auto;
     font-family: "Roboto", sans-serif;
@@ -225,7 +58,7 @@ footer a {
 }
 
 h1 {
-    color: #000000;
+    color: #eb3349;
     font-family: "Poppins", sans-serif;
 }
 
@@ -244,48 +77,17 @@ a {
     padding: 0px;
 }
 
-.container {
-    max-width: 500px;
-    margin: px auto;
-    text-align: center;
-  }
-  
-  h5 {
-    font-size: 24px;
-    margin-bottom: 0px;
-  }
-  
-  input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 2px;
-  }
-  
-  .btn-1 {
-    background-color: #1d0a70;
-    color: rgb(194, 20, 20);
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 10px;
-  }
-  
-  #message {
-    color: rgb(27, 179, 27);
-    margin-top: 20px;
-  }
-
 body,
 html {
     height: 100%;
     width: 100%;
     padding: 0px;
     margin: 0px;
-    background-color: #000000;
+    background-color: #14151a;
     background-image: none;
     display: block;
     height: fit-content;
-    width: 1000vw;
+    width: 100vw;
 }
 
 html {
@@ -315,7 +117,7 @@ div {
 .poster {
     box-sizing: border-box;
     text-align: center;
-    display: -moz-grid-line;
+    display: inline;
     padding: 20px;
     margin: 0px;
     overflow: visible;
@@ -326,7 +128,7 @@ section img {
     box-sizing: border-box;
     height: fit-content;
     max-width: 200px;
-    border: 5px solid rgb(223, 208, 208);
+    border: 5px solid white;
     border-radius: 5px;
     margin: auto;
 }
@@ -359,7 +161,7 @@ h1 {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     display: inline-block;
     margin: 3px 6px;
 }
@@ -373,7 +175,7 @@ h1 {
 }
 
 .watch-btn {
-    background: #f8eaea;
+    background: #ed3832;
     color: black;
     border-radius: 4px;
     font-weight: 400;
@@ -395,7 +197,7 @@ h1 {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #030000;
+    background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -420,7 +222,7 @@ h1 {
     section img {
         box-sizing: border-box;
         height: fit-content;
-        max-width: 3000px;
+        max-width: 300px;
         width: 100%;
         border: 5px solid white;
         border-radius: 5px;
@@ -434,7 +236,7 @@ h1 {
         margin: 0px;
         overflow: visible;
         margin-top: 20px;
-        width: 2500px;
+        width: 250px;
     }
 }
 
@@ -471,7 +273,7 @@ h1 {
 
 h2 {
     font-family: "Montserrat", sans-serif;
-    color: #a4e706;
+    color: #ed3832;
     font-weight: 500;
     width: 100%;
     font-size: 20px;
@@ -485,7 +287,7 @@ h2 {
 }
 
 #latest2 a {
-    color: rgb(160, 5, 26);
+    color: white;
     text-decoration: none;
 }
 
@@ -677,8 +479,21 @@ h2 {
 }
 
 #title1 {
-    height: fit-content;
     width: 70%;
+    height: 86px
+}
+
+#title1 a {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 520px) {
+    #title1 img {
+        height: 55px;
+    }
 }
 
 .extra1 {
@@ -692,6 +507,8 @@ h2 {
 }
 
 @media only screen and (min-width: 580px) {
+
+
     #search-div input {
         width: calc(100% - 55px);
     }
@@ -701,7 +518,6 @@ h2 {
     }
 
     #title1 {
-        height: fit-content;
         width: 100%;
         text-align: center;
     }
@@ -755,7 +571,6 @@ h2 {
     }
 
     #title1 {
-        height: fit-content;
         width: calc(100% - 247px);
         text-align: center;
     }
@@ -773,7 +588,6 @@ h2 {
     }
 
     #title1 {
-        height: fit-content;
         width: calc(100% - 50px);
         text-align: center;
     }
@@ -1196,4 +1010,7 @@ h2 {
 
 #sprite-plyr {
     display: none;
+}
+img{
+    transition: all 1s ease;
 }

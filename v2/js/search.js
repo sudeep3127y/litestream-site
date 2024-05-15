@@ -1,4 +1,4 @@
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=https://proxy.sb543267gmailcom.workers.dev/",
+const ProxyApi = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/";
     searchapi = "/search/",
     AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
@@ -8,7 +8,7 @@ async function getJson(e, t = 0) {
     let a = getApiServer(""),
         r = a + e;
     if (t > 2) throw `Too many errors while fetching ${r}`;
-    t > 0 && (console.log("Retrying fetch using proxy"), (r = "https://proxy.sb543267gmailcom.workers.dev/?u=" + r));
+    t > 0 && (console.log("Retrying fetch using proxy"), (r = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/" + r));
     try {
         let s = await fetch(r);
         return await s.json();
