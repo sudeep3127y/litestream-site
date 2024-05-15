@@ -1,4 +1,4 @@
-const ProxyApi = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/";
+const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     animeapi = "/anime/",
     recommendationsapi = "/recommendations/",
     AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/"];
