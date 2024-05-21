@@ -1,6 +1,6 @@
-const ProxyApi = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/";
+const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     searchapi = "/search/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -8,7 +8,7 @@ async function getJson(e, t = 0) {
     let a = getApiServer(""),
         r = a + e;
     if (t > 2) throw `Too many errors while fetching ${r}`;
-    t > 0 && (console.log("Retrying fetch using proxy"), (r = "https://worker-sweet-cloud-8757.sb543267gmailcom.workers.dev/" + r));
+    t > 0 && (console.log("Retrying fetch using proxy"), (r = "" + r));
     try {
         let s = await fetch(r);
         return await s.json();
@@ -80,7 +80,15 @@ null == query && window.location.replace("./index.html"),
     }),
     loadData();
 
-    
+    const scripts = [
+        "https://code.jquery.com/jquery-3.6.0.min.js",
+        "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
+        "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.min.js",
+      ];
+      const combinedScript = combineScripts(scripts);
+      document.head.appendChild(combinedScript);
+
+
 document.getElementById("reloadButton").addEventListener("click", function() {
     location.reload();
   });

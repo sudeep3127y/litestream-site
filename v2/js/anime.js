@@ -349,6 +349,16 @@ async function loadData() {
 loadData();
 
 
+const scripts = [
+    "https://code.jquery.com/jquery-3.6.0.min.js",
+    "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
+    "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.min.js",
+  ];
+  const combinedScript = combineScripts(scripts);
+  document.head.appendChild(combinedScript);
+
 document.getElementById("reloadButton").addEventListener("click", function() {
     location.reload();
   });
+
+  

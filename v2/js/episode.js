@@ -2,7 +2,7 @@ const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     animeapi = "/anime/",
     episodeapi = "/episode/",
     dlapi = "/download/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -225,3 +225,12 @@ async function loadData() {
 document.getElementById("reloadButton").addEventListener("click", function() {
     location.reload();
   });
+
+
+  const scripts = [
+    "https://code.jquery.com/jquery-3.6.0.min.js",
+    "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
+    "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.min.js",
+  ];
+  const combinedScript = combineScripts(scripts);
+  document.head.appendChild(combinedScript);
