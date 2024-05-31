@@ -1,15 +1,20 @@
 #reloadButton {
-    background-color: #ee0202;
-    border: ;
-    color: rgb(248, 241, 241);
-    padding: 2px 100px;
-    text-align:center;
-    text-decoration: 1;
-    display: inline-block;
-    font-size: 10px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
+    .floating-image {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(253, 19, 19, 0.2);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      
+      .floating-image:hover {
+        transform: scale(1.1);
+      }
+    
 body,
 html {
     overflow-x: hidden;
