@@ -260,11 +260,33 @@ document.getElementById("reloadButton").addEventListener("click", function() {
     location.reload();
   });
 
+// Check if the API response is in the cache
+if (localStorage.getItem('apiResponse')) {
+    // If the response is in the cache, use it
+    const apiResponse = JSON.parse(localStorage.getItem('apiResponse'));
+    // Use the API response
+  } else {
+    // If the response is not in the cache, make a request to the server
+    fetch('https://asta-api.sb543267gmailcom.workers.dev/')
+      .then(response => response.json())
+      .then(data => {
+        // Store the API response in the cache
+        localStorage.setItem('apiResponse', JSON.stringify(data));
+        // Use the API response
+      });
+  }
 
-  const scripts = [
-    "https://code.jquery.com/jquery-3.6.0.min.js",
-    "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
-    "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.min.js",
+  const domainsToPrefetch = [
+    'https://fonts.googleapis.com',
+    'https://fonts.gstatic.com',
+    'https://cdn.jsdelivr.net',
+    'https://kit.fontawesome.com',
+    // Add other domains you want to prefetch and preload
   ];
-  const combinedScript = combineScripts(scripts);
-  document.head.appendChild(combinedScript);
+  
+  domainsToPrefetch.forEach((domain) => {
+    const resource = document.createElement('resource');
+    resource.href = domain;
+    resource.rel = 'prefetch dns-prefetch';
+    document.head.appendChild(resource);
+  });
