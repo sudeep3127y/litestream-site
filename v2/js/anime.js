@@ -348,9 +348,59 @@ async function loadData() {
 }
 loadData();
 
-document.getElementById("reloadButton").addEventListener("click", function() {
-    location.reload();
+const cache = new Map();
+
+function getDataFromAPI(id) {
+  if (cache.has(id)) {
+    return cache.get(id);
+  } else {
+    const data = fetch(`https://asta-api.sb543267gmailcom.workers.dev/data/${id}`);
+    cache.set(id, data);
+    return data;
+  }
+}
+
+const promises = [
+    fetch('https://asta-api.sb543267gmailcom.workers.dev/data/1'),
+    fetch('https://api.example.com/data/2'),
+    fetch('https://api.example.com/data/3')
+  ];
+  
+  Promise.all(promises).then(responses => {
+    const data = responses.map(response => response.json());
+    // process the data
+  }).catch(error => {
+    console.error(error);
   });
+
+  const db = require('pg');
+
+const pool = new db.Pool({
+  user: 'admin',
+  host: 'localhost',
+  database: 'api',
+  password: 'root',
+  port: 5432
+});
+
+app.get('/', (req, res) => {
+  pool.connect((err, client, release) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send({ message: 'Error connecting to database' });
+    } else {
+      client.query('SELECT * FROM users WHERE id = $1', [1], (err, result) => {
+        release();
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: 'Error querying database' });
+        } else {
+          res.json(result.rows);
+        }
+      });
+    }
+  });
+});
 
 // Check if the API response is in the cache
 if (localStorage.getItem('apiResponse')) {
