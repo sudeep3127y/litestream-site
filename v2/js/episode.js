@@ -2,7 +2,7 @@ const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     animeapi = "/anime/",
     episodeapi = "/episode/",
     dlapi = "/download/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/","https://api100.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -120,36 +120,9 @@ async function getDownloadLinks(e, t) {
     }
     document.getElementById("dllinks").innerHTML = i;
 }
-function isShortNumber(e) {
-    return 20 > Number(String(e).replace(".", ""));
-}
-async function getEpSlider(e) {
-    let t = "";
-    for (let s = 0; s < e.length; s++) {
-        let i = e[s][1],
-            a = e[s][0];
-        i == EpisodeID
-            ? isShortNumber(a)
-                ? (t += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime_id=${AnimeID}&episode_id=${i}"><img onerror="retryImageLoad(this)" class="lzy_img" src="staticasta.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${i}><div class=ep-title><span>Episode ${a} - Playing</span></div></a></div>`)
-                : (t += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime_id=${AnimeID}&episode_id=${i}"><img onerror="retryImageLoad(this)" class="lzy_img" src="staticasta.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${i}><div class=ep-title><span>Ep ${a} - Playing</span></div></a></div>`)
-            : isShortNumber(a)
-            ? (t += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${i}"><img onerror="retryImageLoad(this)" class="lzy_img" src="staticasta.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${i}><div class=ep-title><span>Episode ${a}</span></div></a></div>`)
-            : (t += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${i}"><img onerror="retryImageLoad(this)" class="lzy_img" src="staticasta.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${i}><div class=ep-title><span>Ep ${a}</span></div></a></div>`);
-    }
-    (document.getElementById("ep-slider").innerHTML = t),
-        (document.getElementById("slider-main").style.display = "block"),
-        RefreshLazyLoader(),
-        (document.getElementById("main-section").style.display = "block"),
-        document.getElementsByClassName("ep-slider-playing")[0].scrollIntoView({ behavior: "instant", inline: "start", block: "end" }),
-        document.getElementsByClassName("ep-btn-playing")[0].scrollIntoView({ behavior: "instant", inline: "start", block: "end" }),
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" }),
-        setTimeout(() => {
-            (document.getElementById("main-section").style.opacity = 1), (document.getElementById("load").style.display = "none");
-        }, 100);
-}
 function retryImageLoad(e) {
     let t = e.src;
-    (e.src = "staticasta.gif"),
+    (e.src = "static\asta.gif"),
         setTimeout(() => {
             if (t.includes("?t=")) {
                 let s = Number(t.split("?t=")[1]) + 1;

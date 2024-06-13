@@ -15,7 +15,7 @@ async function getJson(e, t = 0) {
     } catch (n) {
         return console.error(n), getJson(e, t + 1);
     }
-}
+  }
 async function RefreshLazyLoader() {
     let e = new IntersectionObserver((e, t) => {
             e.forEach((e) => {

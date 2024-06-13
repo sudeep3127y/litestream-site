@@ -1,7 +1,7 @@
 const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     IndexApi = "/home",
     recentapi = "/recent/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/" ,"https://api.amvstr.me/","https://aniwatch-api-v1-0.onrender.com/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -103,7 +103,7 @@ async function getPopularAnimes(data) {
         }
 
         POPULAR_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb"># ${pos + 1
-            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".popularg").innerHTML = POPULAR_HTML;
@@ -127,7 +127,7 @@ async function getRecentAnimes(page = 1) {
             subOrDub = "SUB";
         }
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".recento").innerHTML += RECENT_HTML;
@@ -135,7 +135,7 @@ async function getRecentAnimes(page = 1) {
 
 // Slider functions
 let slideIndex = 0;
-let clickes = 0;
+let clickes = 1;
 
 function showSlides(n) {
     let i;
@@ -199,21 +199,22 @@ function sleep(ms) {
 }
 
 // To load more animes when scrolled to bottom
-let page = 2;
-let isLoading = false;
+let page = 1;
+let isLoading = 1;
 
 async function loadAnimes() {
     try {
-        if (isLoading == false) {
-            isLoading = true;
+        if (isLoading == true) 
+            {
+            isLoading = false;
             await getRecentAnimes(page);
             RefreshLazyLoader();
             console.log("Recent animes loaded");
-            page += 1;
+            page += 1++;
             isLoading = false;
         }
     } catch (error) {
-        isLoading = false;
+        isLoading = true;
         console.error(`Failed To Load Recent Animes Page : ${page}`);
         page += 1;
     }
