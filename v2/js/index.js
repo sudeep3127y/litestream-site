@@ -1,13 +1,9 @@
 const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
     IndexApi = "/home",
     recentapi = "/recent/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/"];
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
-}
-
-// Usefull functions
-
 async function getJson(path, errCount = 0) {
     const ApiServer = getApiServer();
 
@@ -103,7 +99,7 @@ async function getPopularAnimes(data) {
         }
 
         POPULAR_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb"># ${pos + 1
-            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".popularg").innerHTML = POPULAR_HTML;
@@ -127,7 +123,7 @@ async function getRecentAnimes(page = 1) {
             subOrDub = "SUB";
         }
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".recento").innerHTML += RECENT_HTML;
@@ -135,7 +131,7 @@ async function getRecentAnimes(page = 1) {
 
 // Slider functions
 let slideIndex = 0;
-let clickes = 1;
+let clickes = 0;
 
 function showSlides(n) {
     let i;
@@ -199,22 +195,21 @@ function sleep(ms) {
 }
 
 // To load more animes when scrolled to bottom
-let page = 1;
-let isLoading = 1;
+let page = 2;
+let isLoading = false;
 
 async function loadAnimes() {
     try {
-        if (isLoading == true) 
-            {
-            isLoading = false;
+        if (isLoading == false) {
+            isLoading = true;
             await getRecentAnimes(page);
             RefreshLazyLoader();
             console.log("Recent animes loaded");
-            page += 1++;
+            page += 1;
             isLoading = false;
         }
     } catch (error) {
-        isLoading = true;
+        isLoading = false;
         console.error(`Failed To Load Recent Animes Page : ${page}`);
         page += 1;
     }
@@ -256,92 +251,3 @@ getJson(IndexApi).then((data) => {
         console.log("Recent animes loaded");
     });
 });
-
-document.getElementById("reloadButton").addEventListener("click", function() {
-    location.reload();
-  });
-
-  const cache = new Map();
-
-function getDataFromAPI(id) {
-  if (cache.has(id)) {
-    return cache.get(id);
-  } else {
-    const data = fetch(`https://asta-api.sb543267gmailcom.workers.dev/data/${id}`);
-    cache.set(id, data);
-    return data;
-  }
-}
-
-const promises = [
-    fetch('https://asta-api.sb543267gmailcom.workers.dev/data/1'),
-    fetch('https://api.example.com/data/2'),
-    fetch('https://api.example.com/data/3')
-  ];
-  
-  Promise.all(promises).then(responses => {
-    const data = responses.map(response => response.json());
-    // process the data
-  }).catch(error => {
-    console.error(error);
-  });
-
-  const db = require('pg');
-
-const pool = new db.Pool({
-  user: 'admin',
-  host: 'localhost',
-  database: 'api',
-  password: 'root',
-  port: 5432
-});
-
-app.get('/', (req, res) => {
-  pool.connect((err, client, release) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send({ message: 'Error connecting to database' });
-    } else {
-      client.query('SELECT * FROM users WHERE id = $1', [1], (err, result) => {
-        release();
-        if (err) {
-          console.error(err);
-          res.status(500).send({ message: 'Error querying database' });
-        } else {
-          res.json(result.rows);
-        }
-      });
-    }
-  });
-});
-
-// Check if the API response is in the cache
-if (localStorage.getItem('apiResponse')) {
-    // If the response is in the cache, use it
-    const apiResponse = JSON.parse(localStorage.getItem('apiResponse'));
-    // Use the API response
-  } else {
-    // If the response is not in the cache, make a request to the server
-    fetch('https://asta-api.sb543267gmailcom.workers.dev/')
-      .then(response => response.json())
-      .then(data => {
-        // Store the API response in the cache
-        localStorage.setItem('apiResponse', JSON.stringify(data));
-        // Use the API response
-      });
-  }
-
-  const domainsToPrefetch = [
-    'https://fonts.googleapis.com',
-    'https://fonts.gstatic.com',
-    'https://cdn.jsdelivr.net',
-    'https://kit.fontawesome.com',
-    // Add other domains you want to prefetch and preload
-  ];
-  
-  domainsToPrefetch.forEach((domain) => {
-    const resource = document.createElement('resource');
-    resource.href = domain;
-    resource.rel = 'prefetch dns-prefetch';
-    document.head.appendChild(resource);
-  });
