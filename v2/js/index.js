@@ -3,7 +3,7 @@
 const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
 const IndexApi = "/home/";
 const recentApi = "/recent/";
-const trendingdApi = "/trending/";
+
 
 
 // Api Server Manager
