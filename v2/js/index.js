@@ -1,9 +1,21 @@
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
-    IndexApi = "/home",
-    recentapi = "/recent/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://api3.sb543267gmailcom.workers.dev/"];
+// Api urls
+
+const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
+const IndexApi = "/home/"
+const recentApi = "/recent/"
+const trendingdApi = "/trending/"
+
+
+// Api Server Manager
+
+const AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
+
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
+}
+
+// Usefull functions
+
 async function getJson(path, errCount = 0) {
     const ApiServer = getApiServer();
 
@@ -99,7 +111,7 @@ async function getPopularAnimes(data) {
         }
 
         POPULAR_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb"># ${pos + 1
-            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".popularg").innerHTML = POPULAR_HTML;
@@ -123,7 +135,7 @@ async function getRecentAnimes(page = 1) {
             subOrDub = "SUB";
         }
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".recento").innerHTML += RECENT_HTML;

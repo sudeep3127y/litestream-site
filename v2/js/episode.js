@@ -1,8 +1,9 @@
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/";
+const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
     animeapi = "/anime/",
     episodeapi = "/episode/",
     dlapi = "/download/",
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/"];
+    
+    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }

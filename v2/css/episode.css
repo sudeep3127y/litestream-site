@@ -16,9 +16,27 @@ header {
 }
 .server,
 .slist,
-footer {
-    align-content: center;
-}
+/* Style the footer row */
+.footer-row {
+    background-color: #000000; /* Light gray background */
+    padding: 20px; /* Add some padding */
+    text-align: center; /* Center the text */
+    font-size: 14px; /* Set the font size */
+    color: #666; /* Dark gray text color */
+    border-top: 1px solid #272626; /* Add a top border */
+  }
+  
+  /* Style the copyright symbol */
+  .footer-row span {
+    font-size: 12px; /* Make the copyright symbol smaller */
+    vertical-align: super; /* Raise the symbol slightly */
+  }
+  
+  /* Add some spacing between footer rows */
+  .footer-row + .footer-row {
+    margin-top: 10px; /* Add a margin between rows */
+  }
+  
 .sobtn,
 .stitle {
     font-weight: 600;
@@ -94,19 +112,7 @@ html {
 .server,
 .slist,
 .stitle,
-footer {
-    display: flex;
-}
-footer {
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    background: #032c9c;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-}
+
 ::-webkit-scrollbar-track {
     background: #f1f1f100;
 }
@@ -127,16 +133,7 @@ html,
 section {
     position: relative;
 }
-footer a {
-    color: #000000;
-    font-family: Montserrat, sans-serif;
-    font-size: 11px;
-}
-@media only screen and (min-width: 400px) {
-    footer a {
-        font-size: 13px;
-    }
-}
+
 #head-div {
     background: linear-gradient(to right, #000000 40%, #f45c43);
     padding-top: 25px;
