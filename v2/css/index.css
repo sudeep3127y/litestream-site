@@ -35,14 +35,14 @@ header {
   
 #head-div {
     background: linear-gradient(to right, #000000 40%, #000000);
-    width: 100%;
-    text-align: center;
-    height: 86px;
-    margin: auto;
+    width: 80%;
+    text-align: left;
+    height: 79px;
+    margin: left;
     font-family: "Roboto", sans-serif;
-    font-weight: 500;
+    font-weight: 50;
     font-size: x-large;
-    color: rgb(9, 47, 97);
+    color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -64,6 +64,55 @@ a {
     margin: 0px;
     padding: 0px;
 }
+
+/* Add the following code to your existing CSS file */
+#nav-menu {
+    position: fixed;
+    top: 0;
+    left: 100;
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    padding: 20px;
+    transform: translateX(-200px);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #nav-menu li {
+    margin-bottom: 10px;
+  }
+  
+  #nav-menu a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #nav-menu a:hover {
+    color: #ccc;
+  }
+  
+  #nav-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  #main-content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+  
+  #nav-menu.show {
+    transform: translateX(0);
+  }
 
 body,
 html {
@@ -414,49 +463,44 @@ h2 {
     font-size: 12px;
 }
 
+/* Style the search div */
 #search-div {
-    height: fit-content;
-    background-color: white;
-    border-radius: 5px;
-    height: 40px;
-    width: 30%;
-    position: absolute;
-    top: 25px;
-    right: 10px;
-}
-
-#search-div input {
-    height: 28px;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    padding-left: 5px;
-    font-size: 14px;
-    font-weight: 400;
-    color: black;
-    overflow: visible;
-    font-family: "Montserrat", sans-serif;
-    width: calc(100% - 27px);
-}
-
-#search-div button {
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    height: 40px;
-    width: 20px;
-}
-
-#search-div button i {
-    width: 16px;
-    height: 16px;
-    margin: 0px;
-}
-
-#search-div form {
-    vertical-align: middle;
-    height: 100%;
-    width: 100%;
-}
-
+    width: 250px; /* Set the width to 300px */
+    height: 40px; /* Set the height to 40px */
+    background-color: #020101; /* Light gray background */
+    padding: 10px; /* Add some padding */
+    border: 1px solid #000000; /* Add a border */
+    border-radius: 5px; /* Add a rounded corner */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  /* Style the form elements */
+  #search-div form {
+    display: flex; /* Make the form elements inline */
+    align-items: center; /* Vertically center the elements */
+  }
+  
+  #search-div input[type="text"] {
+    width: 250px; /* Set the width of the input field */
+    height: 30px; /* Set the height of the input field */
+    padding: 10px; /* Add some padding */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add a rounded corner */
+  }
+  
+  #search-div button[type="submit"] {
+    width: 40px; /* Set the width of the button */
+    height: 30px; /* Set the height of the button */
+    background-color: #4CAF50; /* Green background */
+    color: #fff; /* White text color */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Add a rounded corner */
+    cursor: pointer; /* Change the cursor to a pointer */
+  }
+  
+  #search-div button[type="submit"]:hover {
+    background-color: #3e8e41; /* Darker green background on hover */
+  }
 #query {
     width: calc(100% - 55px);
     height: 40px;

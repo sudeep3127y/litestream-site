@@ -16,26 +16,6 @@ header {
 }
 .server,
 .slist,
-/* Style the footer row */
-.footer-row {
-    background-color: #000000; /* Light gray background */
-    padding: 20px; /* Add some padding */
-    text-align: center; /* Center the text */
-    font-size: 14px; /* Set the font size */
-    color: #666; /* Dark gray text color */
-    border-top: 1px solid #272626; /* Add a top border */
-  }
-  
-  /* Style the copyright symbol */
-  .footer-row span {
-    font-size: 12px; /* Make the copyright symbol smaller */
-    vertical-align: super; /* Raise the symbol slightly */
-  }
-  
-  /* Add some spacing between footer rows */
-  .footer-row + .footer-row {
-    margin-top: 10px; /* Add a margin between rows */
-  }
   
 .sobtn,
 .stitle {
@@ -63,11 +43,26 @@ section {
 div {
     box-sizing: border-box;
 }
-#head-div,
-footer a,
-h2 {
-    font-weight: 500;
-}
+/* Style the footer row */
+.footer-row {
+    background-color: #000000; /* Light gray background */
+    padding: 20px; /* Add some padding */
+    text-align: center; /* Center the text */
+    font-size: 14px; /* Set the font size */
+    color: #666; /* Dark gray text color */
+    border-top: 1px solid #272626; /* Add a top border */
+  }
+  
+  /* Style the copyright symbol */
+  .footer-row span {
+    font-size: 12px; /* Make the copyright symbol smaller */
+    vertical-align: super; /* Raise the symbol slightly */
+  }
+  
+  /* Add some spacing between footer rows */
+  .footer-row + .footer-row {
+    margin-top: 10px; /* Add a margin between rows */
+  }
 .ep-btn,
 a {
     text-decoration: none;

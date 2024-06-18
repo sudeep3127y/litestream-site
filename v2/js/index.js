@@ -1,10 +1,8 @@
 // Api urls
 
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
-const IndexApi = "/home/";
-const recentApi = "/recent/";
-
-
+const ProxyApi = "https://proxy.techzbots1.workers.dev/?u=";
+const IndexApi = "/home";
+const recentapi = "/recent/";
 
 // Api Server Manager
 

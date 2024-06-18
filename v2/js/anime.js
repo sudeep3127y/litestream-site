@@ -1,8 +1,13 @@
-const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
-    animeapi = "/anime/";
-    recommendationsapi = "/recommendations/";
+// Api urls
 
-    AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
+const ProxyApi = "https://proxy.sb543267gmailcom.workers.dev/?u=";
+const animeapi = "/anime/";
+const recommendationsapi = "/recommendations/";
+
+// Api Server Manager
+
+const AvailableServers = ["https://asta-api.sb543267gmailcom.workers.dev/","https://vip-gamma.vercel.app/" ,"https://api3.sb543267gmailcom.workers.dev/","https://api100.sb543267gmailcom.workers.dev/","https://api1.sb543267gmailcom.workers.dev/"];
+
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)];
 }
@@ -160,7 +165,7 @@ async function loadAnimeFromAnilist(data) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
 
@@ -180,7 +185,7 @@ async function getEpSlider(total) {
             const episodeId = total[i][1];
             const epNum = total[i][0].replaceAll("-", ".");
             if (Number(epNum) > 0) {
-                ephtml += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${episodeId}"><img onerror="retryImageLoad(this)" class="lzy_img" src="static\asta.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
+                ephtml += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${episodeId}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./static/loading1.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
             }
         }
         document.getElementById("ep-slider").innerHTML = ephtml;
@@ -195,7 +200,7 @@ async function getEpSlider(total) {
 // Retry image load
 function retryImageLoad(img) {
     const ImageUrl = img.src;
-    img.src = "static\asta.gif";
+    img.src = "./static/loading1.gif";
 
     // retry loading after 3 second
 
@@ -299,7 +304,7 @@ async function getRecommendations(anime_title) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\asta.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
     document.getElementsByClassName("sload")[0].style.display = "none";
@@ -347,89 +352,5 @@ async function loadData() {
         console.error(err);
     }
 }
+
 loadData();
-
-const cache = new Map();
-
-function getDataFromAPI(id) {
-  if (cache.has(id)) {
-    return cache.get(id);
-  } else {
-    const data = fetch(`https://asta-api.sb543267gmailcom.workers.dev/data/${id}`);
-    cache.set(id, data);
-    return data;
-  }
-}
-
-const promises = [
-    fetch('https://asta-api.sb543267gmailcom.workers.dev/data/1'),
-    fetch('https://api.example.com/data/2'),
-    fetch('https://api.example.com/data/3')
-  ];
-  
-  Promise.all(promises).then(responses => {
-    const data = responses.map(response => response.json());
-    // process the data
-  }).catch(error => {
-    console.error(error);
-  });
-
-  const db = require('pg');
-
-const pool = new db.Pool({
-  user: 'admin',
-  host: 'localhost',
-  database: 'api',
-  password: 'root',
-  port: 5432
-});
-
-app.get('/', (req, res) => {
-  pool.connect((err, client, release) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send({ message: 'Error connecting to database' });
-    } else {
-      client.query('SELECT * FROM users WHERE id = $1', [1], (err, result) => {
-        release();
-        if (err) {
-          console.error(err);
-          res.status(500).send({ message: 'Error querying database' });
-        } else {
-          res.json(result.rows);
-        }
-      });
-    }
-  });
-});
-
-// Check if the API response is in the cache
-if (localStorage.getItem('apiResponse')) {
-    // If the response is in the cache, use it
-    const apiResponse = JSON.parse(localStorage.getItem('apiResponse'));
-    // Use the API response
-  } else {
-    // If the response is not in the cache, make a request to the server
-    fetch('https://asta-api.sb543267gmailcom.workers.dev/')
-      .then(response => response.json())
-      .then(data => {
-        // Store the API response in the cache
-        localStorage.setItem('apiResponse', JSON.stringify(data));
-        // Use the API response
-      });
-  }
-
-  const domainsToPrefetch = [
-    'https://fonts.googleapis.com',
-    'https://fonts.gstatic.com',
-    'https://cdn.jsdelivr.net',
-    'https://kit.fontawesome.com',
-    // Add other domains you want to prefetch and preload
-  ];
-  
-  domainsToPrefetch.forEach((domain) => {
-    const resource = document.createElement('resource');
-    resource.href = domain;
-    resource.rel = 'prefetch dns-prefetch';
-    document.head.appendChild(resource);
-  });
