@@ -18,7 +18,7 @@ async function getJson(path, errCount = 0) {
     const ApiServer = getApiServer();
     let url = ApiServer + path;
 
-    if (errCount > 2) {
+    if (errCount > 0) {
         throw `Too many errors while fetching ${url}`;
     }
 
@@ -165,7 +165,7 @@ async function loadAnimeFromAnilist(data) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
 
@@ -185,11 +185,11 @@ async function getEpSlider(total) {
             const episodeId = total[i][1];
             const epNum = total[i][0].replaceAll("-", ".");
             if (Number(epNum) > 0) {
-                ephtml += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${episodeId}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./static/loading1.gif" data-src=https://thumb.techzbots1.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
+                ephtml += `<div class=ep-slide><a href="./episode.html?anime_id=${AnimeID}&episode_id=${episodeId}"><img onerror="retryImageLoad(this)" class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src=><div class=ep-title><span></span></div></a></div>`;
             }
         }
         document.getElementById("ep-slider").innerHTML = ephtml;
-        document.getElementById("slider-main").style.display = "block";
+        document.getElementById("slider-main").style.display = "box";
         RefreshLazyLoader();
         console.log("Episode Slider loaded");
     } catch (err) {
@@ -200,7 +200,7 @@ async function getEpSlider(total) {
 // Retry image load
 function retryImageLoad(img) {
     const ImageUrl = img.src;
-    img.src = "./static/loading1.gif";
+    img.src = "static\Spinner@1x-0.2s-200px-200px.svg";
 
     // retry loading after 3 second
 
@@ -215,7 +215,7 @@ function retryImageLoad(img) {
         } else {
             img.src = ImageUrl + "?t=1";
         }
-    }, 3000);
+    }, 1000);
 }
 
 // Function to get episode list
@@ -286,7 +286,7 @@ async function episodeSelectChange(elem) {
 
 // Function to get anime recommendations
 async function getRecommendations(anime_title) {
-    document.getElementsByClassName("sload")[0].style.display = "block";
+    document.getElementsByClassName("sload")[0].style.display = "center";
 
     anime_title = anime_title.replaceAll(" ", "+");
 
@@ -304,7 +304,7 @@ async function getRecommendations(anime_title) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime_id=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
     document.getElementsByClassName("sload")[0].style.display = "none";

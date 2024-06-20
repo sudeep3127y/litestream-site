@@ -19,7 +19,7 @@ async function getJson(path, errCount = 0) {
 
     let url = ApiServer + path;
 
-    if (errCount > 2) {
+    if (errCount > 0) {
         throw `Too many errors while fetching ${url}`;
     }
 
@@ -68,7 +68,7 @@ function shuffle(array) {
 async function getTrendingAnimes(data) {
     let SLIDER_HTML = "";
 
-    for (let pos = 0; pos < data.length; pos++) {
+    for (let pos = 1; pos < data.length; pos++) {
         let anime = data[pos];
         let title = anime["title"]["userPreferred"];
         let type = anime["format"];
@@ -77,13 +77,13 @@ async function getTrendingAnimes(data) {
         let description = anime["description"];
         let url = "./anime.html?anime_id=" + encodeURIComponent(title);
 
-        let poster = anime["bannerImage"];
+        let poster = anime["poster"];
         if (poster == null) {
             poster = anime["coverImage"]["extraLarge"];
         }
 
-        SLIDER_HTML += `<div class="mySlides fade"> <div class="data-slider"> <p class="spotlight">#${pos + 1
-            } Spotlight</p><h1>${title}</h1> <div class="extra1"> <span class="year"><i class="fa fa-play-circle"></i>${type}</span> <span class="year year2"><i class="fa fa-calendar"></i>${status}</span> <span class="cbox cbox1">${genres}</span> <span class="cbox cbox2">HD</span> </div><p class="small-synop">${description}</p><div id="watchh"> <a href="${url}" class="watch-btn"> <i class="fa fa-play-circle"></i> Watch Now </a> <a href="${url}" class="watch-btn watch-btn2"> <i class="fa fa-info-circle"></i> Details<i class="fa fa-angle-right"></i> </a> </div></div><div class="shado"> <a href="${url}"></a> </div><img src="${poster}"> </div>`;
+        SLIDER_HTML += `<div class="mySlides fade"> <div class="data-slider"> <p class="spotlight">#${pos + 2
+            } Spotlight</p><h1>${title}</h1> <div class="extra1"> <span class="year"><i class="fa fa-play-circle"></i>${type}</span> <span class="year year2"><i class="fa fa-calendar"></i>${status}</span> <span class="cbox cbox1">${genres}</span> <span class="cbox cbox2">HD</span> </div><p class="small-synop">${description}</p><div id="watch"> <a href="${url}" class="watch-btn"> <i class="fa fa-play-circle"></i> Watch Now </a> <a href="${url}" class="watch-btn watch-btn2"> <i class="fa fa-info-circle"></i> Details<i class="fa fa-angle-center"></i> </a> </div></div><div class="shado"> <a href="${url}"></a> </div><img src="${poster}"> </div>`;
     }
 
     document.querySelector(".slideshow-container").innerHTML =
@@ -106,10 +106,10 @@ async function getPopularAnimes(data) {
             subOrDub = "DUB";
         } else {
             subOrDub = "SUB";
-        }
+        } 
 
         POPULAR_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb"># ${pos + 1
-            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+            }</div> <div class="dubb dubb2">${subOrDub}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".popularg").innerHTML = POPULAR_HTML;
@@ -133,7 +133,7 @@ async function getRecentAnimes(page = 1) {
             subOrDub = "SUB";
         }
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">${subOrDub}</div><div class="dubb dubb2">EP ${ep}</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".recento").innerHTML += RECENT_HTML;
@@ -160,7 +160,7 @@ function showSlides(n) {
 
 async function showSlides2() {
     if (clickes == 1) {
-        await sleep(10000);
+        await sleep(3000);
         clickes = 0;
     }
     let i;
@@ -173,7 +173,7 @@ async function showSlides2() {
         slideIndex = 1;
     }
     slides[slideIndex - 1].style.display = "flex";
-    setTimeout(showSlides2, 5000);
+    setTimeout(showSlides2, 10000);
 }
 
 function plusSlides(n) {
@@ -214,7 +214,7 @@ async function loadAnimes() {
             isLoading = true;
             await getRecentAnimes(page);
             RefreshLazyLoader();
-            console.log("Recent animes loaded");
+            console.log("Anime fetching from Another server");
             page += 1;
             isLoading = false;
         }
@@ -225,6 +225,7 @@ async function loadAnimes() {
     }
 }
 
+
 // Add a scroll event listener
 window.addEventListener("scroll", function () {
     // Calculate how far the user has scrolled
@@ -232,7 +233,7 @@ window.addEventListener("scroll", function () {
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    if (scrollPosition + 3 * windowHeight >= documentHeight) {
+    if (scrollPosition + 4 * windowHeight >= documentHeight) {
         loadAnimes();
     }
 });
@@ -258,6 +259,7 @@ getJson(IndexApi).then((data) => {
 
     getRecentAnimes(1).then((data) => {
         RefreshLazyLoader();
-        console.log("Recent animes loaded");
+        console.log("Anime fetching from Another server");
     });
 });
+

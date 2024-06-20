@@ -123,7 +123,7 @@ async function getDownloadLinks(e, t) {
 }
 function retryImageLoad(e) {
     let t = e.src;
-    (e.src = "static\asta.gif"),
+    (e.src = "static\Spinner@1x-0.2s-200px-200px.svg"),
         setTimeout(() => {
             if (t.includes("?t=")) {
                 let s = Number(t.split("?t=")[1]) + 1;

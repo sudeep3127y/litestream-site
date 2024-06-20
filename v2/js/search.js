@@ -53,7 +53,7 @@ async function SearchAnime(e, t = 1) {
         o.title.toLowerCase().includes("dub") ? (o.subOrDub = "DUB") : (o.subOrDub = "SUB"),
             (l += `<a href="./anime.html?anime_id=${
                 o.id
-            }"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${o.subOrDub.toUpperCase()}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="https://media.tenor.com/HEPktnyoNAgAAAAi/loading.gif" data-src="${
+            }"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${o.subOrDub.toUpperCase()}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="static\Spinner@1x-0.2s-200px-200px.svg" data-src="${
                 o.img
             }"> </div><div class="la-details"> <h3>${sentenceCase(o.title)}</h3> <div id="extra"> <span>${o.releaseDate}</span> </div></div></div></a>`);
     }
