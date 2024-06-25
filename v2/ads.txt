@@ -1,1 +1,4 @@
-google.com, pub-1216732149255021, DIRECT, f08c47fec0942fa0
+This is a Brave Creators publisher verification file.
+
+Domain: lite-stream.vercel.app
+Token: 4bdb34ea66c61a127c6758a28d60a1d4e8b60e17aec26f9eb9ec7932a64cdee2
